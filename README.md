@@ -30,6 +30,7 @@
 
 ## None technical:
 
+I extended the sort and filtering functionality a bit.
 For the purpose of demonstrating my skills, I focused mainly on building a highly scalable code structure. Here is what I would change if I would do it for the purpose of the task only:
 
 1- Using a json file for customers data instead of a real db
@@ -37,4 +38,5 @@ For the purpose of demonstrating my skills, I focused mainly on building a highl
 3- Change file structure on the backend by:
 Firstly removing the controllers directory and having only the routers,
 Secondly, have less abstraction and put some more code in the router functionality itself for example sorting and pagination
-4- Also if I had some time I
+4- Also if I had some time I would refactor the caching code a bit.
+5- Regarding the frontend I would much prefer to use redux as a state management tool as it's flexible and more scalable. The react context api despite of being powerful does have some issues when it comes to scalability, code readability, abstraction, encapsulation and separation of concern.
