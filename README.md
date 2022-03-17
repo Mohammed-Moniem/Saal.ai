@@ -37,3 +37,4 @@ For the purpose of demonstrating my skills, I focused mainly on building a highl
 3- Change file structure on the backend by:
 Firstly removing the controllers directory and having only the routers,
 Secondly, have less abstraction and put some more code in the router functionality itself for example sorting and pagination
+4- Also if I had some time I
