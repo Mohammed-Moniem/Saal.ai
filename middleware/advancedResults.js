@@ -7,25 +7,20 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   const { select, page, limit } = req.query;
   const reqQuery = { ...req.query };
 
-  // Exclude
   const removeFields = ["select", "sort", "page", "limit"];
   removeFields.forEach((param) => delete reqQuery[param]);
 
-  // Create query string
   let queryStr = JSON.stringify(reqQuery);
 
   query = model.find(JSON.parse(queryStr));
 
-  // Select Fields
   if (select) {
     const fields = select.split(",").join(" ");
     query = query.select(fields);
   }
 
-  // Pagination
   const paginatedResult = await paginate(page, limit, query, model);
 
-  // Executing query
   let results = await paginatedResult.query;
 
   results = sort(results, reqQuery, "id");

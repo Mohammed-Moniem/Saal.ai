@@ -1,5 +1,5 @@
 export LOCAL_MONGO_URI=mongodb://localhost:27017/saaliai
-export PORT=8080
+export PORT=5000
 export NODE_ENV=development
 export JSON_PLACEHOLDER_URL=https://jsonplaceholder.typicode.com/users
 export DEFAULT_PAGE=1

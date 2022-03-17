@@ -18,7 +18,7 @@ const CustomerSchema = new Schema({
       lng: String,
     },
   },
-  phoneNumber: String,
+  phone: String,
   website: String,
 });
 

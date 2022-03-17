@@ -1,12 +1,21 @@
 const express = require("express");
 const Customer = require("../Models/Customer");
-const { getCachedData } = require("../middleware/cache");
+const {
+  getCachedData,
+  cacheState,
+  getCachedState,
+} = require("../middleware/cache");
 const advancedResults = require("../middleware/advancedResults");
 
-const { getCustomers } = require("../controllers/customers");
+const {
+  getCustomers,
+  cacheStateResponse,
+} = require("../controllers/customers");
 
 const router = express.Router();
 
+router.get("/get-cached-state", getCachedState);
+router.post("/cache-state", cacheState, cacheStateResponse);
 router.get("/", getCachedData, advancedResults(Customer), getCustomers);
 
 module.exports = router;

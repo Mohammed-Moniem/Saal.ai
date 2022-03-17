@@ -21,7 +21,6 @@ module.exports.paginate = async (page, limit, query, model) => {
 
   query = query.skip(startIndex).limit(requestedLimit);
 
-  // Pagination
   const pagination = {};
 
   if (endIndex < total) {

@@ -44,3 +44,25 @@ module.exports.cacheResponse = async (query, results, method) => {
   ]);
   await client.disconnect();
 };
+
+module.exports.cacheState = asyncHandler(async (req, res, next) => {
+  const client = await redisClient();
+  await client.sendCommand(["HMSET", `state`, "state", req.body.state]);
+  await client.disconnect();
+  next();
+});
+
+module.exports.getCachedState = asyncHandler(async (req, res, next) => {
+  try {
+    const client = await redisClient();
+    const cachedState = await client.sendCommand(["HMGET", `state`, "state"]);
+    if (cachedState[0] !== null) {
+      await client.disconnect();
+      res.status(200).json({ ...JSON.parse(cachedState[0]), cashed: true });
+    } else {
+      res.end();
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
